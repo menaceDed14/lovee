@@ -15,6 +15,86 @@ const containerVariants = {
   }
 };
 
+// Replace the existing timelineVariants with these new variants
+const timelineLeftVariants = {
+  hidden: { 
+    x: -100,
+    opacity: 0
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 70,
+      damping: 15,
+      duration: 1
+    }
+  }
+};
+
+const timelineRightVariants = {
+  hidden: { 
+    x: 100,
+    opacity: 0
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 70,
+      damping: 15,
+      duration: 1
+    }
+  }
+};
+
+const timelineContentVariants = {
+  hidden: { 
+    y: 20,
+    opacity: 0
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      duration: 0.8
+    }
+  }
+};
+
+// Add these nav animation variants after the other variants
+const navVariants = {
+  hidden: { y: -100, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const navItemVariants = {
+  hidden: { y: -20, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20
+    }
+  }
+};
+
 function App() {
   const [imagesLoaded, setImagesLoaded] = useState(true); // Change default to true
   const [hasBlownCandles, setHasBlownCandles] = useState(false);
@@ -148,14 +228,38 @@ function App() {
   return (
     <div className="container" style={{ overflowY: 'auto', height: 'auto', minHeight: '100vh' }}>
       {/* Navigation */}
-      <nav className="birthday-nav">
-        <ul>
-          <li><a href="#intro" onClick={(e) => handleNavClick(e, 'intro')}>Home</a></li>
-          <li><a href="#message" onClick={(e) => handleNavClick(e, 'message')}>Birthday Message</a></li>
-          <li><a href="#gallery" onClick={(e) => handleNavClick(e, 'gallery')}>Gallery</a></li>
-          <li><a href="#timeline" onClick={(e) => handleNavClick(e, 'timeline')}>Our Story</a></li>
-        </ul>
-      </nav>
+      <motion.nav 
+        className="birthday-nav"
+        initial="hidden"
+        animate="visible"
+        variants={navVariants}
+      >
+        <div className="nav-container">
+          <motion.ul className="nav-links">
+            {[
+              { href: '#intro', text: 'Home' },
+              { href: '#message', text: 'Birthday Message' },
+              { href: '#gallery', text: 'Gallery' },
+              { href: '#timeline', text: 'Our Story' }
+            ].map((link, index) => (
+              <motion.li 
+                key={link.href}
+                variants={navItemVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a 
+                  href={link.href} 
+                  onClick={(e) => handleNavClick(e, link.href.substring(1))}
+                  className="nav-link"
+                >
+                  {link.text}
+                </a>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+      </motion.nav>
 
       {/* Home Section */}
       <section id="intro" className="home-section">
@@ -291,15 +395,76 @@ function App() {
 
       {/* Timeline Section */}
       <section id="timeline" className="timeline-section">
-        <h2 className="section-title">Our Story So Far</h2>        
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ 
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+            duration: 0.8 
+          }}
+        >
+          Our Story So Far
+        </motion.h2>        
         <div className="timeline">
-          {timelineEvents.map((event) => (
-            <div key={event.id} className="timeline-event">
-              <span className="timeline-date">{event.date}</span>
-              <h3>{event.title}</h3>
-              <p>{event.description}</p>
-              {event.image && <img src={event.image} alt={event.title} className="timeline-image" />}
-            </div>
+          {timelineEvents.map((event, index) => (
+            <motion.div 
+              key={event.id} 
+              className={`timeline-event ${index % 2 === 0 ? 'left' : 'right'}`}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={index % 2 === 0 ? timelineLeftVariants : timelineRightVariants}
+              custom={index}
+            >
+              <motion.div
+                className="timeline-content"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={timelineContentVariants}
+                transition={{ 
+                  delay: 0.2,
+                  staggerChildren: 0.1 
+                }}
+              >
+                <motion.span 
+                  className="timeline-date"
+                  variants={timelineContentVariants}
+                >
+                  {event.date}
+                </motion.span>
+                <motion.h3
+                  variants={timelineContentVariants}
+                >
+                  {event.title}
+                </motion.h3>
+                <motion.p
+                  variants={timelineContentVariants}
+                >
+                  {event.description}
+                </motion.p>
+                {event.image && (
+                  <motion.img 
+                    src={event.image} 
+                    alt={event.title} 
+                    className="timeline-image"
+                    variants={timelineContentVariants}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { 
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20 
+                      }
+                    }}
+                  />
+                )}
+              </motion.div>
+            </motion.div>
           ))}
           <div style={{ clear: 'both', display: 'table', content: '""' }}></div>
         </div>
