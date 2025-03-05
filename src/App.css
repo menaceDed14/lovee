@@ -2016,7 +2016,7 @@ section:not(:last-child)::after {
   justify-content: center;
   align-items: center;
   background: var(--section-bg);
-  padding: 8rem 2rem 2rem; /* Increased top padding to account for nav bar */
+  padding: 10rem 2rem 2rem; /* Increased top padding to account for nav bar */
   position: relative;
   overflow: hidden;
   background-color: var(--app-background);
