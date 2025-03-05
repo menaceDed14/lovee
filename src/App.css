@@ -2833,3 +2833,75 @@ section {
     flex-shrink: 0;
   }
 }
+
+/* Update Timeline Responsive Design */
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 30px; /* Move timeline line to left side on mobile */
+  }
+
+  .timeline-event {
+    width: calc(100% - 60px); /* Full width minus space for timeline */
+    margin-left: 60px; /* Space for timeline dot */
+    float: none !important; /* Override float */
+    clear: both !important;
+  }
+
+  .timeline-event::after {
+    left: -45px !important; /* Position dot on the left for all events */
+    right: auto !important;
+  }
+
+  .timeline-event:nth-child(odd) .timeline-date,
+  .timeline-event:nth-child(even) .timeline-date {
+    left: auto;
+    right: 20px;
+  }
+
+  .timeline-event {
+    /* Reset any existing transforms */
+    transform: translateX(0) !important;
+    opacity: 1;
+  }
+
+  .timeline-event:hover {
+    transform: scale(1.02) translateY(-5px) !important;
+  }
+
+  .timeline-image {
+    height: 180px; /* Slightly smaller images on mobile */
+  }
+
+  .timeline-event h3 {
+    font-size: 1.3rem; /* Slightly smaller title */
+    margin-right: 60px; /* Space for date */
+  }
+
+  .timeline-event p {
+    font-size: 1rem; /* Adjusted text size */
+    margin-bottom: 1rem;
+  }
+
+  .timeline-date {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+  }
+}
+
+/* Additional small screen adjustments */
+@media screen and (max-width: 480px) {
+  .timeline-event {
+    padding: 1.5rem;
+    margin-left: 50px;
+  }
+
+  .timeline::before {
+    left: 25px;
+  }
+
+  .timeline-event::after {
+    left: -40px !important;
+    width: 16px;
+    height: 16px;
+  }
+}
