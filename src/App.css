@@ -380,7 +380,7 @@ body {
   z-index: 2000;
   background: rgba(255, 242, 245, 0.98);
   backdrop-filter: blur(10px);
-  padding: env(safe-area-inset-top) 1rem 0.5rem;
+  padding: max(env(safe-area-inset-top), 1rem) 1rem 0.5rem;
   border-bottom: 1px solid rgba(255, 105, 180, 0.3);
   box-shadow: 0 4px 20px rgba(255, 105, 180, 0.1);
   transition: all 0.3s ease;
@@ -2737,7 +2737,7 @@ section:not(:last-child)::after {
 /* Responsive Design Updates */
 @media screen and (max-width: 768px) {
   :root {
-    --nav-height: 60px;
+    --nav-height: 80px; /* Increased nav height for mobile */
   }
 
   .birthday-nav {
@@ -2745,8 +2745,10 @@ section:not(:last-child)::after {
   }
 
   .birthday-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
   }
 
   .birthday-nav li {
@@ -2759,12 +2761,14 @@ section:not(:last-child)::after {
   }
 
   .home-section {
-    padding-top: calc(var(--nav-height) + 1rem);
+    padding-top: max(calc(var(--nav-height) + env(safe-area-inset-top)), 6rem);
     min-height: calc(100vh - env(safe-area-inset-top));
   }
 
   .home-content {
     padding: 1.5rem;
+    margin-top: 2rem; /* Add some space at the top */
+    transform: none; /* Remove the transform to prevent cutoff */
   }
 }
 
@@ -2777,7 +2781,7 @@ section:not(:last-child)::after {
 
 @supports (padding-top: env(safe-area-inset-top)) {
   .birthday-nav {
-    padding-top: env(safe-area-inset-top);
+    padding-top: calc(env(safe-area-inset-top) + 0.5rem);
   }
 }
 
