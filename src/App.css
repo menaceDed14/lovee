@@ -2761,7 +2761,7 @@ section:not(:last-child)::after {
   }
 
   .home-section {
-    padding-top: max(calc(var(--nav-height) + env(safe-area-inset-top)), 10rem);
+    padding-top: max(calc(var(--nav-height) + env(safe-area-inset-top)), 8rem);
     min-height: calc(100vh - env(safe-area-inset-top));
   }
 
