@@ -96,7 +96,7 @@ const navItemVariants = {
 };
 
 function App() {
-  const [imagesLoaded, setImagesLoaded] = useState(true); // Change default to true
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [hasBlownCandles, setHasBlownCandles] = useState(false);
   const [showHearts, setShowHearts] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -136,36 +136,36 @@ function App() {
       id: 1,
       date: "March 2024",
       title: "When We First Met",
-      description: "The beginning of our beautiful story. I still remember how nervous I was talking to you for the first time.",
-      image: "/img/bibang (1).jpeg"
+      description: "We were classmates in Environmental Science, hahaha! That was our first face-to-face class, and you were the first one in the room. Luckily, we ended up as group mates for our reporting, which made everything even more exciting. Then, during our second meeting, when it was time to present, you borrowed my laptop to study because you hadn’t prepared, hahaha! The entire month of March, every Saturday, was both challenging and exciting because it was the day I got to see you. No matter how hectic things were, those moments made everything worthwhile.",
+      image: "/img/crisnie.jpg"
     },
     {
       id: 2,
       date: "March-September 2024",
       title: "Getting to Know You",
-      description: "Every moment spent together made me fall deeper. Those late night conversations and spontaneous adventures.",
-      image: "/img/bibang (7).jpeg"
+      description: "Every moment we spent together deepened my feelings for you—those late-night conversations and spontaneous adventures became memories I will always cherish. We both understood that spending time together and dating back then was not the right thing to do, and we both know why. Yet, despite the challenges and hardships, our love endured and led us to where we are today. It was not an easy journey, and it came with its share of pain, but in the end, it was all worth it. Now, I sincerely hope that we have overcome the past and can finally embrace a future filled with happiness, love, and unwavering commitment. May we continue to build a strong and lasting relationship, cherishing every moment and growing together for years to come.",
+      image: "/img/crisnie1.jpg"
     },
     {
       id: 3,
-      date: "October 2024",
+      date: "October 18, 2024",
       title: "It's Official! 💑",
-      description: "The day we decided to make it official. I've never been happier than when you said yes.",
-      image: "/img/bibang (33).jpeg"
+      description: "The day you said yes and made our relationship official was one of the happiest moments of my life. I could hardly believe it—we were finally together. For months, we had already been acting as a couple, but hearing you affirm it made everything feel truly real. It was a moment of joy and certainty that I will always treasure.",
+      image: "/img/crisnie2.jpeg"
     },
     {
       id: 4,
       date: "October 2024 - Present",
       title: "Our Journey Together",
-      description: "Creating beautiful memories every day. Each moment with you feels like a blessing.",
-      image: "/img/bibang (15).jpeg"
+      description: "Each moment with you is a blessing, and every day we create beautiful memories together. Our journey hasn’t been easy—we’ve had our fair share of disagreements, from small, petty arguments to challenges that tested our patience, understanding, and love for each other. There were times when we struggled to see eye to eye, moments when our differences felt too great to overcome, and days when we questioned whether we were strong enough to keep going. But despite the misunderstandings, the frustrations, and the hardships, we always found our way back to each other. We chose to listen, to compromise, and to grow—not just as individuals but as partners. No relationship is perfect, and we are no exception, but what makes ours special is that we never stop trying. We keep learning, we keep fighting, and we keep choosing each other, no matter how difficult things get. And I hope that no matter what lies ahead, we will continue to hold on, to fight for what we have, and to cherish every moment—until there is nothing left to fight for, and all that remains is the love we have built together.",
+      image: "/img/crisnie3.jpeg"
     },
     {
       id: 5,
-      date: "Today",
+      date: "March 1, 2025",
       title: "Happy Birthday!",
-      description: "Celebrating you and all the joy you bring to my life. Here's to many more birthdays together!",
-      image: "/img/bibang (21).jpeg"
+      description: "Today, I celebrate you and the incredible joy you bring into my life. Your presence has been a blessing, and I am grateful for every moment we share. As we mark this special day, I look forward to celebrating many more birthdays together, creating lasting memories filled with love and happiness. Happy birthday! Never stop learning, growing, and chasing your dream of becoming a lawyer. Your determination and passion inspire me, and I have no doubt that you will achieve everything you set your heart on. No matter what challenges come your way, I will always be here to support you, encourage you, and stand by your side. I love you!",
+      image: "/img/bibang (28).jpeg"
     }
   ];
 
@@ -278,7 +278,7 @@ function App() {
           >
             <h1 className="main-title">
               <span className="title-line">Happy Birthday</span>
-              <span className="title-accent">My Beautiful Angel</span>
+              <span className="title-accent">Arnie Lou Gabuya</span>
             </h1>
           </motion.div>
           
@@ -290,8 +290,8 @@ function App() {
           >
             <div className="name-decoration left"></div>
             <h2 className="name-display">
-              <span className="name-prefix">to my dearest</span>
-              <span className="name-highlight">Love</span>
+              <span className="name-prefix">to my dearest palangga</span>
+              <span className="name-highlight">bibang</span>
             </h2>
             <div className="name-decoration right"></div>
           </motion.div>
@@ -303,9 +303,9 @@ function App() {
             transition={{ delay: 1.1, duration: 0.8 }}
           >
             <p className="love-message">
-              <span className="message-line">Every moment with you is a gift,</span>
-              <span className="message-line">every smile you share lights up my world.</span>
-              <span className="message-line">Today, we celebrate the most precious person in my life.</span>
+              <span className="message-line">Cringe kaayo love ahhahahah,</span>
+              <span className="message-line">Pero inani najud ko ka buang saimo huhu goodness,</span>
+              <span className="message-line">Wala ko kabalo asa mag start haha basaha nlang lageeee hahahah.</span>
             </p>
           </motion.div>
           
@@ -318,7 +318,7 @@ function App() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="button-text">Begin Our Journey</span>
+            <span className="button-text">Tuploka ni bok</span>
             <span className="button-icon">✨</span>
           </motion.a>
         </motion.div>
@@ -326,7 +326,7 @@ function App() {
 
       {/* Message Section */}
       <section id="message" className="message-section">
-        <h2 className="section-title">Birthday Message</h2>
+        <h2 className="section-title">Ge chatgpt ra nako ni ha, char!</h2>
         
         <div className="message-content">
           <div className="message-header">
@@ -339,8 +339,10 @@ function App() {
             <div className="message-paragraph">
               <span className="message-highlight">Dearest Love,</span>
               <p className="message-text">
-                On your special day, I want to take a moment to tell you how much you mean to me. 
-                Your smile brightens my darkest days, and your love gives me strength I never knew I had.
+              On your special day, I just want to take a moment to express how much you truly mean to me. 
+              This is our first birthday together, and I wish I could make it as extraordinary as you deserve. 
+              I’m sorry if I can’t do as much as I’d like, but please know that my love, appreciation, and gratitude for you are endless. 
+              No matter what, I hope this day brings you happiness, because you deserve nothing less.
               </p>
             </div>
             
@@ -350,8 +352,12 @@ function App() {
             
             <div className="message-paragraph">
               <p className="message-text">
-                Every moment with you is a treasure, and I'm so grateful for all the memories we've created together.
-                You are the most amazing person I know - kind, beautiful, and with a heart of gold.
+              Every moment with you is a cherished treasure, and I am deeply grateful for the memories we have created together. 
+              Our first trip to Davao was truly unforgettable, and I appreciated every experience we shared. 
+              I am also thankful for the safe journey we had—it made our adventure even more meaningful. 
+              One of my favorite moments was the early mornings on the bus, with the gentle sound of rain creating a serene atmosphere. 
+              Yet, what made it most comforting was having you by my side. 
+              Traveling with you is a joy, and I look forward to many more journeys together.
               </p>
             </div>
             
@@ -361,8 +367,13 @@ function App() {
             
             <div className="message-paragraph">
               <p className="message-text">
-                I hope this birthday brings you all the joy and happiness you deserve.
-                I promise to be by your side, celebrating many more birthdays together.
+              I hope this birthday brings you all the joy, love, and happiness you truly deserve. 
+              You are an incredible person, and I feel so blessed to share this special day with you. 
+              From the moment we started hanging out and dating, I’ve come to deeply appreciate your whole existence—you bring so much light and warmth into my life. 
+              Beyond that, you have taught me valuable lessons that have helped me grow, not just in our relationship but also as a person. 
+              Your kindness, strength, and perspective inspire me every day. No matter what, 
+              I will always be on your side, supporting you, cheering you on, and cherishing every moment we share. 
+              I look forward to celebrating many more birthdays together, creating beautiful memories, and growing side by side.
               </p>
             </div>
             
@@ -474,11 +485,10 @@ function App() {
       <footer className="birthday-footer">
         <div className="footer-content">
           <div className="footer-message">
-            Happy Birthday, My Love! ❤️
+            Thank You, Love
           </div>
           <p className="footer-submessage">
-            Thank you for being the most amazing person in my life.
-            Every moment with you is a gift I cherish deeply.
+            I love you always akoa palangga ha mwua
           </p>
           <a 
             href="#intro" 
@@ -602,7 +612,7 @@ function App() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                jejemon pero bahala na ahhahaha tuploka na lang
+                jejemon love huhu pwede mag bisaya nlang? hahaa love u
               </motion.p>
               <motion.button 
                 onClick={() => setShowMessage(false)}
@@ -612,7 +622,7 @@ function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Let's Celebrate!
+                Start
               </motion.button>
             </motion.div>
           </motion.div>

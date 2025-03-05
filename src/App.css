@@ -312,42 +312,24 @@
 .item-10 { top: 30%; left: 25%; animation-delay: 4.5s; }
 
 :root {
-  /* Updated Consistent Color Palette */
-  --primary-color: #ff1493; /* Deep Pink */
-  --secondary-color: #ff69b4; /* Hot Pink */
-  --accent-color: #ffb6c1; /* Light Pink */
-  --background-color: #fff0f5; /* Lavender Blush */
+  --primary-color: #ff1493;
+  --secondary-color: #ff69b4;
+  --accent-color: #ffb6c1;
+  --background-color: #fff0f5;
   --text-color: #4a3b3b;
-  --text-light: #666666;
   --text-dark: #2a2a2a;
   --white: #ffffff;
-  --red: #ff0000;
   --primary-dark: #e02e70;
-  --light-color: #fff0f5;
-  --dark-color: #4a3b3b;
   --shadow-sm: 0 4px 6px rgba(255, 77, 141, 0.1);
   --shadow-md: 0 6px 15px rgba(255, 77, 141, 0.15);
   --shadow-lg: 0 10px 25px rgba(255, 77, 141, 0.2);
   --gradient-primary: linear-gradient(135deg, var(--white) 0%, var(--background-color) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  --gradient-accent: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   --romantic-font: 'Playfair Display', serif;
   --body-font: 'Poppins', sans-serif;
   --handwritten-font: 'Dancing Script', cursive;
-  --border-radius-sm: 8px;
-  --border-radius-md: 12px;
-  --border-radius-lg: 20px;
   --transition-fast: 0.3s ease;
-  --transition-medium: 0.5s ease;
-  --transition-slow: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --section-bg: #fff5f7;  /* New light pink background color */
-  --section-overlay: rgba(255, 192, 203, 0.05);  /* New overlay color */
-  --nav-bg-color: rgba(255, 20, 147, 0.95); /* New navigation background color */
-  --nav-text-color: #ffffff; /* New navigation text color */
-  --app-background: #fff0f5; /* Main app background color */
-  --nav-background: rgba(255, 20, 147, 0.95); /* New nav background */
-  --nav-text: #ffffff; /* Nav text color */
-  --nav-hover: #ffb6c1; /* Nav hover color */
+  --nav-height: 60px;
 }
 
 *, *::before, *::after {
@@ -412,7 +394,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3rem;
   list-style: none;
   padding: 0.5rem 0;
   margin: 0;
@@ -790,37 +772,27 @@ section:not(:last-child)::after {
   background: var(--white);
   padding: 15px 15px 60px 15px;
   box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(255, 77, 141, 0.2);
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 77, 141, 0.1);
   border-radius: var(--border-radius-sm);
   position: relative;
   transform: rotate(var(--rotation));
-  transition: all var(--transition-slow);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--accent-color);
+  border: 1px solid rgba(255, 182, 193, 0.3);
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
-
-.polaroid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  z-index: 2;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
+  cursor: pointer;
+  will-change: transform, box-shadow;
 }
 
 .polaroid:hover {
-  transform: rotate(0) translateY(-15px);
+  transform: rotate(0) translateY(-15px) scale(1.02);
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(255, 77, 141, 0.4);
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(255, 77, 141, 0.3);
   z-index: 10;
   border-color: rgba(255, 77, 141, 0.6);
 }
@@ -830,12 +802,15 @@ section:not(:last-child)::after {
   height: 280px;
   object-fit: cover;
   border-radius: var(--border-radius-sm);
-  transition: all var(--transition-medium);
-  filter: brightness(0.9);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.95);
+  transform: scale(1);
+  will-change: transform, filter;
 }
 
 .polaroid:hover img {
   filter: brightness(1.05);
+  transform: scale(1.05);
 }
 
 .polaroid-caption {
@@ -849,29 +824,32 @@ section:not(:last-child)::after {
   font-weight: 500;
   color: var(--text-dark);
   padding: 0 15px;
-  transition: all var(--transition-medium);
-  line-height: 1.3;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  will-change: transform, color;
 }
 
 .polaroid:hover .polaroid-caption {
   color: var(--primary-color);
-  transform: scale(1.05);
+  transform: translateY(-5px);
 }
 
+/* Add a smooth heart animation on hover */
 .polaroid::after {
   content: '❤️';
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.2rem;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
   opacity: 0;
-  transform: scale(0);
-  transition: all 0.3s ease;
+  transform: scale(0) rotate(-45deg);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .polaroid:hover::after {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) rotate(0);
 }
 
 .footer-content p {
@@ -1383,14 +1361,20 @@ section:not(:last-child)::after {
   box-shadow: var(--shadow-md);
   transition: all var(--transition-medium);
   border: 1px solid var(--accent-color);
+  transform: translateX(var(--slide-distance, -100px));
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow, border-color;
+  transform-origin: center;
+  transform: scale(1);
 }
 
 .timeline-event:hover {
-  transform: translateY(-5px);
+  transform: scale(1.03) translateY(-8px);
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(255, 77, 141, 0.4);
-  border-color: rgba(255, 77, 141, 0.6);
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 10px 30px rgba(255, 77, 141, 0.2);
+  border-color: var(--primary-color);
+  z-index: 5;
 }
 
 .timeline-event:nth-child(odd) {
@@ -1413,6 +1397,16 @@ section:not(:last-child)::after {
   border-radius: 50%; 
   box-shadow: 0 0 0 4px rgba(255, 77, 141, 0.2);
   z-index: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow, background-color;
+}
+
+.timeline-event:hover::after {
+  transform: scale(1.2);
+  background-color: var(--secondary-color);
+  box-shadow: 
+    0 0 0 4px rgba(255, 77, 141, 0.3),
+    0 0 15px rgba(255, 77, 141, 0.5);
 }
 
 .timeline-event:nth-child(odd)::after {
@@ -1433,6 +1427,13 @@ section:not(:last-child)::after {
   font-size: 0.9rem;
   font-weight: 500;
   box-shadow: var(--shadow-sm);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background-color;
+}
+
+.timeline-event:hover .timeline-date {
+  transform: translateY(-5px);
+  background: var(--secondary-color);
 }
 
 .timeline-event:nth-child(odd) .timeline-date {
@@ -1449,12 +1450,23 @@ section:not(:last-child)::after {
   margin-bottom: 1rem;
   color: var(--primary-dark);
   text-shadow: 0 0 10px rgba(255, 77, 141, 0.5);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-event:hover h3 {
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .timeline-event p {
   margin-bottom: 1.5rem;
   line-height: 1.6;
   color: var(--text-dark);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-event:hover p {
+  color: var(--primary-dark);
 }
 
 .timeline-image {
@@ -1464,10 +1476,39 @@ section:not(:last-child)::after {
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, filter;
 }
 
 .timeline-event:hover .timeline-image {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Add a subtle shine effect */
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.timeline-event:hover::before {
+  transform: translateX(100%);
 }
 
 .birthday-footer {
@@ -2244,7 +2285,7 @@ section:not(:last-child)::after {
   font-family: var(--romantic-font);
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   line-height: 1.6;
-  color: var(--text-dark);
+  color: var (--text-dark);
 }
 
 .message-line {
@@ -2600,7 +2641,7 @@ section:not(:last-child)::after {
 
 .message-text:hover {
   opacity: 1;
-  color: var(--primary-dark);
+  color: var (--primary-dark);
 }
 
 .message-divider {
